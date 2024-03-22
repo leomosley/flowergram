@@ -2,7 +2,7 @@
 import React from 'react';
 import { useSearchParams } from 'next/navigation';
 
-export default function Message() {
+export default function FlowerGram() {
   const searchParams = useSearchParams();
   const message = searchParams.get('m');
   const flower = searchParams.get('f');
@@ -11,10 +11,12 @@ export default function Message() {
   const recipient = searchParams.get('r');
 
   return (
-    <div className="flex">
+    <div className="flex flex-col">
       {message}
       {flower}
       {colour}
+      {sender}
+      {recipient}
     </div>
   );
 }

@@ -8,15 +8,15 @@ export interface Flower {
 }
 
 export const colours: string[] = [
-  "#FF69B4", // Hot Pink
-  "#FFD700", // Gold
-  "#FF6347", // Tomato
-  "#00FF00", // Lime
-  "#800080", // Purple
-  "#FF4500", // Orange Red
-  "#DA70D6", // Orchid
-  "#FFFF00", // Yellow
-  "#FFA500"  // Orange
+  "#5eead4", // teal-300
+  "#8b5cf6", // violet-500
+  "#ec4899", // pink-500
+  "#10b981", // emerald-500
+  "#e11d48", // rose-600
+  "#fde68a", // amber-200
+  "#f0fdf4", // green-50
+  "#2563eb", // blue-600
+  "#f9a8d4"  // pink-300
 ];
 
 export const flowers: Flower[] = [

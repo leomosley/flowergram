@@ -1,8 +1,11 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import { flowers, colours } from '@/flowers';
+import { useRouter } from 'next/navigation';
 
 export default function GenerateMessage() {
+  const router = useRouter();
+
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
   const [colour, setColour] = useState<number>(0);
@@ -17,7 +20,24 @@ export default function GenerateMessage() {
 
   const generate = () => {
     setLoading(true);
-    console.log(message, colour, flower, recipient, sender);
+    const basepath = "https://flowergram.vercel.app";
+    var url = "/message?";
+    
+    url += "c=" + colour;
+    url += "&f=" + flower;
+    
+    if (message) {
+      url += "&m=" + message
+    }
+
+    if (sender) {
+      url += "&s=" + sender
+    }
+
+    if (recipient) {
+      url += "&r=" + recipient
+    }
+
     setLoading(false);
   }
 
@@ -70,7 +90,7 @@ export default function GenerateMessage() {
                 key={index}
                 className="w-10 h-10 rounded"
                 style={{ background: colour }}
-                onClick={() => setFlower(index)}
+                onClick={() => setColour(index)}
                 disabled={loading}
               >
               </button>

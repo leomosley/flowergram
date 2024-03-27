@@ -1,10 +1,10 @@
 import React from 'react';
-import GenerateMessage from '@/components/MessageForm';
+import MessageForm from '@/components/MessageForm';
 
 export default function New() {
   return (
-    <section className="flex justify-center">
-      <GenerateMessage />
+    <section className="flex justify-center mt-20">
+      <MessageForm />
     </section>
   )
 }

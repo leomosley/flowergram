@@ -1,5 +1,5 @@
 import React from 'react';
-import GenerateMessage from '@/components/GenerateMessage';
+import GenerateMessage from '@/components/MessageForm';
 
 export default function New() {
   return (

@@ -20,5 +20,10 @@ export const colours: string[] = [
 ];
 
 export const flowers: Flower[] = [
-  { id: 0, name: "lily", component: Lily}
+  { id: 0, name: "lily", component: Lily},
+  { id: 1, name: "lily", component: Lily},
+  { id: 2, name: "lily", component: Lily},
+  { id: 3, name: "lily", component: Lily},
+  { id: 4, name: "lily", component: Lily},
+  { id: 5, name: "lily", component: Lily},
 ];

@@ -1,5 +1,10 @@
 import React from 'react';
 import Lily from './Lily';
+import Tulip from './Tulip';
+import Rose from './Rose';
+import Daisy from './Daisy';
+import Orchid from './Orchid';
+import Azalea from './Azalea';
 
 export interface Flower {
   id: number;
@@ -21,9 +26,9 @@ export const colours: string[] = [
 
 export const flowers: Flower[] = [
   { id: 0, name: "lily", component: Lily},
-  { id: 1, name: "lily", component: Lily},
-  { id: 2, name: "lily", component: Lily},
-  { id: 3, name: "lily", component: Lily},
-  { id: 4, name: "lily", component: Lily},
-  { id: 5, name: "lily", component: Lily},
+  { id: 1, name: "tulip", component: Rose},
+  { id: 2, name: "rose", component: Tulip},
+  { id: 3, name: "dasiy", component: Daisy},
+  { id: 4, name: "azalea", component: Azalea},
+  { id: 5, name: "orchid", component: Orchid},
 ];

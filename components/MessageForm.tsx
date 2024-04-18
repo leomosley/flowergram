@@ -1,12 +1,9 @@
 'use client';
 import React, { useState } from 'react';
 import { flowers, colours } from '@/flowers';
-import { useRouter } from 'next/navigation';
 import clsx from 'clsx';
 
 export default function MessageForm() {
-  const router = useRouter();
-
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
   const [colour, setColour] = useState<number>(0);
@@ -45,15 +42,20 @@ export default function MessageForm() {
 
   const Modal = () => {
     return modalOpen && (
-      <div className="absolute mx-auto top-1/3 p-4 z-20 rounded-lg bg-neutral-800 border border-neutral-700">
+      <div className="absolute mx-auto top-1/3 p-4 z-20 rounded-lg bg-neutral-900 border border-neutral-800">
         <h1 className="text-lg">Share</h1>
         <hr></hr>
         <div className="flex gap-2 mt-2">
-          <p className="p-2 rounded w-56 text-nowrap overflow-hidden border border-neutral-700">{generated}</p>
+          <p className="p-2 rounded w-56 text-nowrap overflow-hidden border border-neutral-800">{generated}</p>
           <button
-            className="p-2 bg-neutral-600 rounded"
+            className="p-2 bg-neutral-700 rounded hover:bg-neutral-700/70"
             onClick={() => navigator.clipboard.writeText(generated)}
           >Copy
+          </button>
+          <button
+            className="p-2 bg-neutral-700 rounded hover:bg-neutral-700/70"
+            onClick={() => window.open(generated, "_blank")}
+          >Open
           </button>
         </div>
       </div>
@@ -77,7 +79,7 @@ export default function MessageForm() {
     <div className="flex flex-col gap-2">
       <div className="flex gap-2">
         <input 
-          className="rounded-lg p-2 bg-neutral-800 border border-neutral-700"
+          className="rounded-lg p-2 bg-neutral-900 border border-neutral-800"
           value={recipient}
           onChange={(e) => setRecipient(e.currentTarget.value)}
           disabled={loading}
@@ -85,7 +87,7 @@ export default function MessageForm() {
           
           />
         <input 
-          className="rounded-lg p-2 bg-neutral-800 border border-neutral-700"
+          className="rounded-lg p-2 bg-neutral-900 border border-neutral-800"
           value={sender}
           onChange={(e) => setSender(e.currentTarget.value)}
           disabled={loading}
@@ -93,20 +95,20 @@ export default function MessageForm() {
           />
       </div>
       <textarea
-        className="resize-none min-h-28  overflow-y-auto gap-2 p-2 rounded-lg bg-neutral-800 border border-neutral-700"
+        className="resize-none min-h-28  overflow-y-auto gap-2 p-2 rounded-lg bg-neutral-900 border border-neutral-800"
         value={message}
         onChange={(e) => setMessage(e.currentTarget.value)}
         disabled={loading}
         placeholder="Message"
       />
       <div className="flex gap-2">
-        <div className="flex-1 grid grid-cols-3 grid-rows-2 gap-2 p-2 rounded-lg bg-neutral-800 border border-neutral-700">
+        <div className="flex-1 grid grid-cols-3 grid-rows-2 gap-2 p-2 rounded-lg bg-neutral-900 border border-neutral-800">
           {flowers.map((f) => (
             <button
             key={f.id}
               className={clsx(
-                "flex-1 px-4 bg-neutral-600 rounded",
-                flower === f.id && "bg-neutral-700"
+                "flex-1 px-4 bg-neutral-700 rounded",
+                flower === f.id && "bg-neutral-700/60"
               )}
               onClick={() => setFlower(f.id)}
               disabled={loading}
@@ -114,7 +116,7 @@ export default function MessageForm() {
             </button>
           ))}
         </div>
-          <div className="grid grid-cols-3 grid-rows-3 gap-2 p-2 rounded-lg bg-neutral-800 border border-neutral-700">
+          <div className="grid grid-cols-3 grid-rows-3 gap-2 p-2 rounded-lg bg-neutral-900 border border-neutral-800">
             {colours.map((c, index) => (
               <button
                 key={index}
@@ -132,7 +134,7 @@ export default function MessageForm() {
       </div>
       <div className="flex">
         <button
-          className="rounded-lg ml-auto p-2 bg-neutral-800 border border-neutral-700"
+          className="rounded-lg ml-auto p-2 bg-neutral-900 border border-neutral-800"
           onClick={generate}
           disabled={loading}
           >Generate

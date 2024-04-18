@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { useSearchParams } from 'next/navigation';
+import clsx from 'clsx';
 
 export default function FlowerGram() {
   const searchParams = useSearchParams();
@@ -11,12 +12,16 @@ export default function FlowerGram() {
   const recipient = searchParams.get('r');
 
   return (
-    <div className="flex flex-col">
-      {message}
-      {flower}
-      {colour}
-      {sender}
-      {recipient}
+    <div 
+      className={clsx(
+        "flex flex-col mx-auto max-w-80 rounded-xl mt-80",
+        "p-4 bg-neutral-900 border border-neutral-800",
+        "text-balance"
+      )}
+    >
+      {recipient && <span className="">To {recipient}</span>}
+      {message && <span className="">{message}</span>}
+      {sender && <span className="">From {sender}</span>}
     </div>
   );
 }

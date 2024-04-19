@@ -16,7 +16,7 @@ export default function MessageForm() {
   const generate = () => {
     setLoading(true);
     let url = `${
-      process.env.VERCEL 
+      process.env.NEXT_PUBLIC_VERCEL_URL
       ? 'https://flowergram.vercel.app' 
       : 'http://localhost:3000'
     }/message?`;

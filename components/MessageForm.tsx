@@ -1,17 +1,18 @@
 'use client';
 import React, { useState } from 'react';
 import { flowers, colours } from '@/flowers';
+import { useModalContext } from '@/modal';
 import clsx from 'clsx';
 
 export default function MessageForm() {
+  const { setUrl, setOpen } = useModalContext();
+
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
   const [colour, setColour] = useState<number>(0);
   const [flower, setFlower] = useState<number>(0);
   const [recipient, setRecipient] = useState<string>("");
   const [sender, setSender] = useState<string>("");
-  const [generated, setGenerated] = useState<string>("");
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   const generate = () => {
     setLoading(true);
@@ -35,47 +36,12 @@ export default function MessageForm() {
         url += `&${key}=${encodeURI(temp)}`;
       }
     });
-    setGenerated(url);
-    setModalOpen(true);
+    setUrl!(url);
+    setOpen!(true);
     setLoading(false);
   }
 
-  const Modal = () => {
-    return modalOpen && (
-      <div className="absolute mx-auto top-1/3 p-4 z-20 rounded-lg bg-neutral-900 border border-neutral-800">
-        <h1 className="text-lg">Share</h1>
-        <hr></hr>
-        <div className="flex gap-2 mt-2">
-          <p className="p-2 rounded w-56 text-nowrap overflow-hidden border border-neutral-800">{generated}</p>
-          <button
-            className="p-2 bg-neutral-700 rounded hover:bg-neutral-700/70"
-            onClick={() => navigator.clipboard.writeText(generated)}
-          >Copy
-          </button>
-          <button
-            className="p-2 bg-neutral-700 rounded hover:bg-neutral-700/70"
-            onClick={() => window.open(generated, "_blank")}
-          >Open
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  const Backdrop = () => {
-    return modalOpen && (
-      <div 
-        className="absolute top-0 left-0 w-screen h-screen backdrop-blur-sm z-10 transition cursor-pointer"
-        onClick={() => setModalOpen(false)}
-      >
-      </div>
-    );
-  }
-
   return (
-    <>
-    <Backdrop />
-    <Modal/>
     <div className="flex flex-col gap-2">
       <div className="flex gap-2">
         <input 
@@ -95,7 +61,7 @@ export default function MessageForm() {
           />
       </div>
       <textarea
-        className="resize-none min-h-28  overflow-y-auto gap-2 p-2 rounded-lg bg-neutral-900 border border-neutral-800"
+        className="resize-none min-h-28 overflow-y-auto gap-2 p-2 rounded-lg bg-neutral-900 border border-neutral-800"
         value={message}
         onChange={(e) => setMessage(e.currentTarget.value)}
         disabled={loading}
@@ -141,6 +107,5 @@ export default function MessageForm() {
         </button>
       </div>
     </div>
-    </>
   );
 }

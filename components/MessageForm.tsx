@@ -102,12 +102,12 @@ export default function MessageForm() {
         placeholder="Message"
       />
       <div className="flex gap-2">
-        <div className="flex-1 grid grid-cols-3 grid-rows-2 gap-2 p-2 rounded-lg bg-neutral-900 border border-neutral-800">
+        <div className="flex-1 grid grid-cols-2 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-2 p-2 rounded-lg bg-neutral-900 border border-neutral-800">
           {flowers.map((f) => (
             <button
             key={f.id}
               className={clsx(
-                "flex-1 px-4 bg-neutral-700 rounded",
+                "flex-1 px- md:px-4 bg-neutral-700 rounded",
                 flower === f.id && "bg-neutral-700/60"
               )}
               onClick={() => setFlower(f.id)}

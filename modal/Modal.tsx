@@ -27,14 +27,14 @@ export default function Modal() {
       )}
       onClick={() => setOpen!(false)}
     >
-      <div className={clsx(
-        "absolute top-10 z-20 p-4 transition",
-        "rounded-lg bg-neutral-900 border border-neutral-800",
-        showPopup && "opacity-100", 
-        !showPopup && "opacity-0"
-      )}>
-        Link coppied to clipboard 🌷
-      </div>
+      {showPopup && (
+        <div className={clsx(
+          "absolute top-10 z-20 p-4 transition",
+          "rounded-lg bg-neutral-900 border border-neutral-800",
+        )}>
+          Link coppied to clipboard 🌷
+        </div>
+      )}
       <div 
         className={clsx(
           "absolute top-1/3 p-4 z-20 cursor-default",

@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ModalStateProvider>
           <Modal />
-          <main className="flex flex-col p-4 mx-auto md:max-w-4xl">
+          <main className="flex flex-col p-4 mx-auto md:max-w-5xl">
             <Header />
             {children}
           </main>

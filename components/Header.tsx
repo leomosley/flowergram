@@ -7,12 +7,12 @@ export default function Header() {
   return (
     <div className="flex">
       <Link
-        className="h-7 w-7"
+        className="h-10 w-10"
         href="/"
-      ><LuFlower2 className="w-full h-full" />
+      ><LuFlower className="w-full h-full" />
       </Link>
       <Link
-        className="h-7 w-7 ml-auto"
+        className="h-10 w-10 ml-auto"
         href="/new"
       ><HiOutlinePencilAlt className="w-full h-full" />
       </Link>

@@ -1,19 +1,19 @@
 'use client';
 import React, { useState } from 'react';
 import { flowers, colours } from '@/flowers';
-import { useModalContext } from '@/modal';
 import { HiOutlinePaperAirplane } from 'react-icons/hi';
 import clsx from 'clsx';
+import Modal from './Modal';
 
 export default function MessageForm() {
-  const { setUrl, setOpen } = useModalContext();
-
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
   const [colour, setColour] = useState<number>(0);
   const [flower, setFlower] = useState<number>(0);
   const [recipient, setRecipient] = useState<string>("");
   const [sender, setSender] = useState<string>("");
+  const [url, setUrl] = useState<string>("");
+  const [open, setOpen] = useState<boolean>(false);
 
   const generate = () => {
     setLoading(true);
@@ -37,12 +37,19 @@ export default function MessageForm() {
         url += `&${key}=${encodeURI(temp)}`;
       }
     });
-    setUrl!(url);
-    setOpen!(true);
+    setUrl(url);
+    setOpen(true);
     setLoading(false);
   }
 
   return (
+    <>
+    <Modal
+      url={url}
+      setUrl={setUrl}
+      open={open}
+      setOpen={setOpen}
+    />
     <div className="flex flex-col gap-2">
       <div className="flex gap-2">
         <input 
@@ -51,7 +58,7 @@ export default function MessageForm() {
           onChange={(e) => setRecipient(e.currentTarget.value)}
           disabled={loading}
           placeholder="To"  
-        />
+          />
         <input 
           className="rounded-lg p-2 bg-neutral-900 border border-neutral-800"
           value={sender}
@@ -66,20 +73,20 @@ export default function MessageForm() {
         onChange={(e) => setMessage(e.currentTarget.value)}
         disabled={loading}
         placeholder="Message"
-      />
+        />
       <div className="flex gap-2">
         <div className="flex-1 grid grid-cols-2 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-2 p-2 rounded-lg bg-neutral-900 border border-neutral-800">
           {flowers.map((f) => (
             <button
             key={f.id}
-              className={clsx(
-                "flex-1 px-1 md:px-4 bg-neutral-700 rounded",
-                flower === f.id && "bg-neutral-700/60",
-                "text-xl md:text-2xl"
-              )}
-              onClick={() => setFlower(f.id)}
-              disabled={loading}
-              aria-label={f.name}
+            className={clsx(
+              "flex-1 px-1 md:px-4 bg-neutral-700 rounded",
+              flower === f.id && "bg-neutral-700/60",
+              "text-xl md:text-2xl"
+            )}
+            onClick={() => setFlower(f.id)}
+            disabled={loading}
+            aria-label={f.name}
             >{f.icon}
             </button>
           ))}
@@ -87,15 +94,15 @@ export default function MessageForm() {
           <div className="grid grid-cols-3 grid-rows-3 gap-2 p-2 rounded-lg bg-neutral-900 border border-neutral-800">
             {colours.map((c, index) => (
               <button
-                key={index}
-                className={clsx(
-                  "w-10 h-10 rounded",
-                  colour === index && "border"
-                  )}
-                style={{ background: c }}
-                onClick={() => setColour(index)}
-                disabled={loading}
-                aria-label={c}
+              key={index}
+              className={clsx(
+                "w-10 h-10 rounded",
+                colour === index && "border"
+              )}
+              style={{ background: c }}
+              onClick={() => setColour(index)}
+              disabled={loading}
+              aria-label={c}
               >
               </button>
             ))}
@@ -111,5 +118,6 @@ export default function MessageForm() {
         </button>
       </div>
     </div>
+    </>
   );
 }

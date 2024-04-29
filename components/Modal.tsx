@@ -1,10 +1,18 @@
 'use client';
-import React, { useState } from 'react';
-import { useModalContext } from '.';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import clsx from 'clsx';
 
-export default function Modal() {
-  const { url, open, setOpen } = useModalContext();
+export default function Modal({
+  url,
+  setUrl,
+  open,
+  setOpen
+} : {
+  url: string,
+  setUrl: Dispatch<SetStateAction<string>>
+  open: boolean,
+  setOpen: Dispatch<SetStateAction<boolean>>
+}) {
   const [showPopup, setShowPopup] = useState<boolean>(false);
 
   const defaultUrl = `${

@@ -8,7 +8,7 @@ export default function ShareButton() {
     try {
       if (navigator.share) {
         await navigator.share({
-          title: 'Flowergram • Send digital flowers',
+          title: 'Flowergram',
           text: 'Send personalised digital flowers and messages to anyone, anywhere, absolutely free.',
           url: 'https://flowergram.vercel.app',
         });
@@ -24,7 +24,7 @@ export default function ShareButton() {
     <button
       id="share"
       className={clsx(
-        "flex flex-1 gap-1 items-center p-2 rounded-xl glow border border-black hover:border-neutral-900",
+        "flex flex-1 gap-1 items-center p-2 rounded-xl glow border border-transparent",
         "transition duration-300 hover:shadow-[0_0_2rem_-0.5rem_#fff8]"
       )}
       aria-label="share"

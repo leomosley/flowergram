@@ -3,14 +3,24 @@ import clsx from 'clsx';
 import React from 'react'
 import { HiShare } from 'react-icons/hi';
 
-export default function ShareButton() {
+export default function ShareButton({
+  title,
+  text,
+  url,
+  className
+} : {
+  title?: string;
+  text?: string;
+  url?: string;
+  className?: string;
+}) {
   const handleShare = async () => {
     try {
       if (navigator.share) {
         await navigator.share({
-          title: 'Flowergram',
-          text: 'Send personalised digital flowers and messages to anyone, anywhere, absolutely free.',
-          url: 'https://flowergram.vercel.app',
+          title: title ?? "Share Link",
+          text: text ?? "",
+          url: url ?? "https://flowergram.vercel.app",
         });
       } else {
         throw new Error('Web Share API not supported');

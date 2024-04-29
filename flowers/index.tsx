@@ -10,7 +10,7 @@ export interface Flower {
   id: number;
   name: string;
   icon: string;
-  component: ()=> React.JSX.Element;
+  component: React.JSX.Element;
 }
 
 export const colours: string[] = [
@@ -26,10 +26,10 @@ export const colours: string[] = [
 ];
 
 export const flowers: Flower[] = [
-  { id: 0, name: "Lily", icon: "🌺", component: Lily},
-  { id: 1, name: "Rose", icon: "🌷", component: Rose},
-  { id: 2, name: "Tulip", icon: "🌹", component: Tulip},
-  { id: 3, name: "Daisy", icon: "🌼", component: Daisy},
-  { id: 4, name: "Sunflower", icon: "🌻", component: Sunflower},
-  { id: 5, name: "Cherry Blossom", icon: "🌸", component: CherryBlossom},
+  { id: 0, name: "Lily", icon: "🌺", component: <Lily />},
+  { id: 1, name: "Rose", icon: "🌷", component: <Rose />},
+  { id: 2, name: "Tulip", icon: "🌹", component: <Tulip />},
+  { id: 3, name: "Daisy", icon: "🌼", component: <Daisy />},
+  { id: 4, name: "Sunflower", icon: "🌻", component: <Sunflower />},
+  { id: 5, name: "Cherry Blossom", icon: "🌸", component: <CherryBlossom />},
 ];

@@ -1,11 +1,11 @@
 import React, { Suspense } from 'react';
-import FlowerGram from '@/components/FlowerGram';
+import Message from '@/components/Message';
 
-export default function Message() {
+export default function MessagePage() {
   return (
     <section className="flex">
       <Suspense>
-        <FlowerGram />
+        <Message />
       </Suspense>
     </section>
   );

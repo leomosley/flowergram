@@ -62,9 +62,8 @@ export default function Modal({
         <div className="flex glow">
           {recipient && <span className="flex flex-1 p-2 mr-2 rounded border border-neutral-700">To: {recipient}</span>}
           {sender && <span className="flex flex-1 p-2 rounded border border-neutral-700">From: {sender}</span>}
-          {(sender || recipient) && <hr className="my-2 border-neutral-700"></hr>}
         </div>
-        <hr className="my-2 border-neutral-700"></hr>
+        {(sender || recipient) && <hr className="my-2 border-neutral-700"></hr>}
         <p className="p-2 rounded max-w-80 glow text-nowrap overflow-hidden border border-neutral-800">{(url ?? defaultUrl).split('//')[1]}</p>
         <hr className="my-2 border-neutral-700"></hr>
         <div className="flex justify-center gap-2 mt-2">

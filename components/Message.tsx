@@ -3,7 +3,7 @@ import React from 'react';
 import { useSearchParams } from 'next/navigation';
 import { flowers } from '@/flowers';
 
-export default function FlowerGram() {
+export default function Message() {
   const searchParams = useSearchParams();
   const message = searchParams.get('m');
   const flower = searchParams.get('f');
@@ -12,6 +12,7 @@ export default function FlowerGram() {
   const recipient = searchParams.get('r');
 
   return (
+    <>
     <div className="flex mx-auto max-w-80 rounded-xl mt-80">
       <div className="flex flex-col text-balance">
         {recipient && <span className="">To {recipient}</span>}
@@ -20,5 +21,7 @@ export default function FlowerGram() {
         {flower && <span>{flowers[Number(flower)].icon}</span>}
       </div>
     </div>
+    {flower && flowers[Number(flower)].component}
+    </>
   );
 }

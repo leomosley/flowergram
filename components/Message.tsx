@@ -1,27 +1,30 @@
-'use client';
+import { Flower } from '@/flowers';
 import React from 'react';
-import { useSearchParams } from 'next/navigation';
-import { flowers } from '@/flowers';
 
-export default function Message() {
-  const searchParams = useSearchParams();
-  const message = searchParams.get('m');
-  const flower = searchParams.get('f');
-  const colour = searchParams.get('c');
-  const sender = searchParams.get('s');
-  const recipient = searchParams.get('r');
+export default function Message({
+  recipient,
+  sender,
+  message,
+  flower,
+  colour,
+  flowers
+}: {
+  recipient?: string | null;
+  sender?: string | null;
+  message?: string | null;
+  flower?: Flower;
+  colour?: string | null;
+  flowers: Flower[];
+}) {
 
   return (
-    <>
-    <div className="flex mx-auto max-w-80 rounded-xl mt-80">
+    <div className="absolute mx-auto max-w-80 top-10">
       <div className="flex flex-col text-balance">
         {recipient && <span className="">To {recipient}</span>}
         {message && <span className="">{message}</span>}
         {sender && <span className="">From {sender}</span>}
-        {flower && <span>{flowers[Number(flower)].icon}</span>}
+        {flower && <span className=""> {flower.icon}</span>}
       </div>
     </div>
-    {flower && flowers[Number(flower)].component}
-    </>
   );
 }

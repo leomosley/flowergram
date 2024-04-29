@@ -1,7 +1,10 @@
 import React from 'react'
+import Stem from './components/Stem';
 
 export default function Lily() {
   return (
-    <div>Lily</div>
+    <div className="flex flex-col">
+      <Stem />
+    </div>
   );
 }

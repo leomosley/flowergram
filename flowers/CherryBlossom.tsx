@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Orchid() {
+export default function CherryBlossom() {
   return (
     <div>Orchid</div>
   )

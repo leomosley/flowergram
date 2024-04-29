@@ -22,6 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ModalStateProvider>
+          <div className="night"></div>
           <Modal />
           <main className="flex flex-col p-4 mx-auto md:max-w-5xl">
             <Header />

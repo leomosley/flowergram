@@ -6,6 +6,7 @@ export default function PageNotFound() {
     { label: "Home", href: '/' },
     { label: "New Message", href: '/new' },
   ];
+  
   return (
     <section className="flex flex-col mx-auto md:max-w-2xl p-4 mt-56 gap-2">
       <div className="bg-neutral-900 p-4 rounded-lg border border-neutral-800">

@@ -2,6 +2,7 @@
 import React from 'react';
 import { useSearchParams } from 'next/navigation';
 import clsx from 'clsx';
+import { flowers } from '@/flowers';
 
 export default function FlowerGram() {
   const searchParams = useSearchParams();
@@ -22,6 +23,7 @@ export default function FlowerGram() {
       {recipient && <span className="">To {recipient}</span>}
       {message && <span className="">{message}</span>}
       {sender && <span className="">From {sender}</span>}
+      {flower && <span>{flowers[Number(flower)].icon}</span>}
     </div>
   );
 }

@@ -73,12 +73,13 @@ export default function MessageForm() {
             <button
             key={f.id}
               className={clsx(
-                "flex-1 px- md:px-4 bg-neutral-700 rounded",
-                flower === f.id && "bg-neutral-700/60"
+                "flex-1 px-1 md:px-4 bg-neutral-700 rounded",
+                flower === f.id && "bg-neutral-700/60",
+                "text-xl md:text-2xl"
               )}
               onClick={() => setFlower(f.id)}
               disabled={loading}
-            >{f.name}
+            >{f.icon}
             </button>
           ))}
         </div>

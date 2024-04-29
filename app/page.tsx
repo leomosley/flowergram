@@ -39,9 +39,7 @@ export default function Home() {
           <span className="">GitHub</span>
         </a>
         <ShareButton 
-          title='Flowergram'
           text='Send personalised digital flowers and messages to anyone, anywhere, absolutely free.'
-          url='https://flowergram.vercel.app'
         />
       </div>
     </section>

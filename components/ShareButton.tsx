@@ -18,7 +18,7 @@ export default function ShareButton({
     try {
       if (navigator.share) {
         await navigator.share({
-          title: title ?? "Share Link",
+          title: title ?? "FlowerGram",
           text: text ?? "",
           url: url ?? "https://flowergram.vercel.app",
         });
@@ -34,7 +34,7 @@ export default function ShareButton({
     <button
       id="share"
       className={clsx(
-        "flex flex-1 gap-1 items-center p-2 rounded-xl glow bg-neutral-950 border border-neutral-950",
+        "flex gap-1 items-center p-2 rounded-xl glow bg-neutral-950 border border-neutral-950",
         "transition duration-300 hover:shadow-[0_0_2rem_-0.5rem_#fff8]",
         className
       )}

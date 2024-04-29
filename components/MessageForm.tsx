@@ -49,6 +49,8 @@ export default function MessageForm() {
       setUrl={setUrl}
       open={open}
       setOpen={setOpen}
+      sender={sender}
+      recipient={recipient}
     />
     <div className="flex flex-col gap-2">
       <div className="flex gap-2">

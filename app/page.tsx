@@ -16,7 +16,7 @@ export default function Home() {
         <Link
           id="create"
           className={clsx(
-            "flex flex-1 gap-1 items-center p-2 rounded-xl glow border",
+            "flex flex-1 gap-1 items-center p-2 rounded-xl glow bg-neutral-950 border",
             "transition duration-300 hover:shadow-[0_0_2rem_-0.5rem_#fff8]"
           )}
           href={'/new'}
@@ -28,7 +28,7 @@ export default function Home() {
         <a
           id="github"
           className={clsx(
-            "flex flex-1 gap-1 items-center p-2 rounded-xl glow border border-transparent",
+            "flex flex-1 gap-1 items-center p-2 rounded-xl glow bg-neutral-950 border border-neutral-950",
             "transition duration-300 hover:shadow-[0_0_2rem_-0.5rem_#fff8]"
           )}
           href="https://github.com/leomosley/flowergram"

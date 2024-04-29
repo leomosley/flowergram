@@ -7,15 +7,14 @@
 }
 
 .glow {
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
 body {
   min-height: 100vh;
   background-color: var(--dark-color);
-  overflow: hidden;
   perspective: 1000px;
-
+  overflow-x: hidden;
   @apply
     text-gray-200
     scroll-smooth
@@ -23,7 +22,7 @@ body {
 }
 
 /* https://github.com/jeycaarce/flowers */
-.night {
+.background {
   z-index: -1;
   position: fixed;
   left: 50%;

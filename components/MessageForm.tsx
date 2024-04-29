@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { flowers, colours } from '@/flowers';
 import { useModalContext } from '@/modal';
+import { HiOutlinePaperAirplane } from 'react-icons/hi';
 import clsx from 'clsx';
 
 export default function MessageForm() {
@@ -49,9 +50,8 @@ export default function MessageForm() {
           value={recipient}
           onChange={(e) => setRecipient(e.currentTarget.value)}
           disabled={loading}
-          placeholder="To"
-          
-          />
+          placeholder="To"  
+        />
         <input 
           className="rounded-lg p-2 bg-neutral-900 border border-neutral-800"
           value={sender}
@@ -79,6 +79,7 @@ export default function MessageForm() {
               )}
               onClick={() => setFlower(f.id)}
               disabled={loading}
+              aria-label={f.name}
             >{f.icon}
             </button>
           ))}
@@ -94,6 +95,7 @@ export default function MessageForm() {
                 style={{ background: c }}
                 onClick={() => setColour(index)}
                 disabled={loading}
+                aria-label={c}
               >
               </button>
             ))}
@@ -104,7 +106,8 @@ export default function MessageForm() {
           className="rounded-lg ml-auto p-2 bg-neutral-900 border border-neutral-800"
           onClick={generate}
           disabled={loading}
-          >Generate
+          aria-label='share'
+          ><HiOutlinePaperAirplane className="text-xl rotate-45 -mt-1 -mr-1"/>
         </button>
       </div>
     </div>

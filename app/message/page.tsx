@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import Message from '@/components/Message';
 import { useSearchParams } from 'next/navigation';
 import { colours, Flower, flowers } from '@/flowers/index';
@@ -21,16 +21,18 @@ export default function MessagePage() {
   }, [flowerParam, colourParam]);
 
   return (
-    <section className="absolute inset-0 flex items-end justify-center min-h-screen">
-      {/* <Message 
-        message={messageParam}
-        flower={flower}
-        colour={colour}
-        sender={senderParam}
-        recipient={recipientParam}
-        flowers={flowers}
-      /> */}
-      {flower && flower.component}
-    </section>
+    <Suspense>
+      <section className="absolute inset-0 flex items-end justify-center min-h-screen">
+        {/* <Message 
+          message={messageParam}
+          flower={flower}
+          colour={colour}
+          sender={senderParam}
+          recipient={recipientParam}
+          flowers={flowers}
+        /> */}
+        {flower && flower.component}
+      </section>
+    </Suspense>
   );
 }

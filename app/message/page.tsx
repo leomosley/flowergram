@@ -21,7 +21,7 @@ export default function MessagePage() {
   }, [flowerParam, colourParam]);
 
   return (
-    <section className="absolute inset-0 flex items-end justify-center min-h-screen">
+    <section className="absolute inset-0 flex items-end justify-center min-h-dvh">
       {/* <Message 
         message={messageParam}
         flower={flower}

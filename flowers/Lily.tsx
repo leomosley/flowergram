@@ -1,10 +1,10 @@
 import React from 'react'
-import Stem from './components/Stem';
+import Base from './components/Base';
 
 export default function Lily() {
   return (
-    <div className="flex flex-col">
-      <Stem />
+    <div className="">
+      <Base />
     </div>
   );
 }

@@ -7,7 +7,7 @@ export default function Base({
   className?: string;
 }) {
   return (
-    <div>
+    <div className="sway">
       <Stem />
       <Stem className='right'/>
       <Stem className='left'/>

@@ -1,7 +1,10 @@
 import React from 'react'
+import Base from './components/Base';
 
 export default function Rose() {
   return (
-    <div>Rose</div>
+    <div className="">
+      <Base />
+    </div>
   );
 }

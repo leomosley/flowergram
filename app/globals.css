@@ -48,16 +48,21 @@ body {
   animation: grow-flower-tree 4s backwards;
 }
 
+.sway {
+  -webkit-animation: sway 4s linear infinite;
+          animation: sway 4s linear infinite;
+}
+
 .right {
   height: 60vmin;
   rotate: 17deg;
-  margin-left: 10vh;
+  margin-left: 10vmin;
 }
 
 .left {
   height: 55vmin;
   rotate: -19deg;
-  margin-left: -10vh;
+  margin-left: -10vmin;
 }
 
 .small-leaf {
@@ -187,5 +192,22 @@ body {
   0% {
     transform-origin: right;
     transform: rotate(-70deg) rotateY(30deg) scale(0);
+  }
+}
+
+@-webkit-keyframes sway {
+  0%, 100% {
+    transform: rotate(2deg);
+  }
+  50% {
+    transform: rotate(-2deg);
+  }
+}
+@keyframes sway {
+  0%, 100% {
+    transform: rotate(2deg);
+  }
+  50% {
+    transform: rotate(-2deg);
   }
 }

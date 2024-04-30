@@ -1,7 +1,10 @@
 import React from 'react'
+import Base from './components/Base'
 
 export default function Daisy() {
   return (
-    <div>Daisy</div>
-  )
+    <div className="">
+    <Base />
+  </div>
+  );
 }

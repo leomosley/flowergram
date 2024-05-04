@@ -53,29 +53,40 @@ export default function MessageForm() {
       recipient={recipient}
     />
     <div className="flex flex-col gap-2">
-      <div className="flex gap-2">
+      <div className="flex flex-col">
+        <label className="font-bold">
+          To
+        </label>
         <input 
           className="rounded-lg p-2 bg-neutral-900 border border-neutral-800"
           value={recipient}
           onChange={(e) => setRecipient(e.currentTarget.value)}
           disabled={loading}
-          placeholder="To"  
-          />
+          autoFocus
+        />
+      </div>
+      <div className="flex flex-col">
+        <label className="font-bold">
+          From
+        </label>
         <input 
           className="rounded-lg p-2 bg-neutral-900 border border-neutral-800"
           value={sender}
           onChange={(e) => setSender(e.currentTarget.value)}
           disabled={loading}
-          placeholder="From"
-          />
-      </div>
-      <textarea
-        className="resize-none min-h-28 overflow-y-auto gap-2 p-2 rounded-lg bg-neutral-900 border border-neutral-800"
-        value={message}
-        onChange={(e) => setMessage(e.currentTarget.value)}
-        disabled={loading}
-        placeholder="Message"
         />
+      </div>
+      <div className="flex flex-col">
+        <label className="font-bold">
+          Message
+        </label>
+        <textarea
+          className="resize-none min-h-28 overflow-y-auto gap-2 p-2 rounded-lg bg-neutral-900 border border-neutral-800"
+          value={message}
+          onChange={(e) => setMessage(e.currentTarget.value)}
+          disabled={loading}
+        />
+      </div>
       <div className="flex gap-2">
         <div className="flex-1 grid grid-cols-2 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-2 p-2 rounded-lg bg-neutral-900 border border-neutral-800">
           {flowers.map((f) => (
@@ -112,11 +123,12 @@ export default function MessageForm() {
       </div>
       <div className="flex">
         <button
-          className="rounded-lg ml-auto p-2 bg-neutral-900 border border-neutral-800"
+          className="flex gap-2 rounded-lg p-2 bg-neutral-900 border border-neutral-800"
           onClick={generate}
           disabled={loading}
           aria-label='share'
-          ><HiOutlinePaperAirplane className="text-xl rotate-45 -mt-1 -mr-1"/>
+          >
+            Send <HiOutlinePaperAirplane className="text-xl rotate-45 -mr-1"/>
         </button>
       </div>
     </div>

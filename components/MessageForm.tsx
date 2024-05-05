@@ -52,13 +52,13 @@ export default function MessageForm() {
       sender={sender}
       recipient={recipient}
     />
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 p-4 backdrop-blur-xl border border-neutral-800 rounded-xl">
       <div className="flex flex-col">
         <label className="font-bold">
           To
         </label>
         <input 
-          className="rounded-lg p-2 bg-neutral-900 border border-neutral-800"
+          className="rounded-lg p-2 border border-neutral-800 bg-transparent"
           value={recipient}
           onChange={(e) => setRecipient(e.currentTarget.value)}
           disabled={loading}
@@ -70,7 +70,7 @@ export default function MessageForm() {
           From
         </label>
         <input 
-          className="rounded-lg p-2 bg-neutral-900 border border-neutral-800"
+          className="rounded-lg p-2 border border-neutral-800 bg-transparent"
           value={sender}
           onChange={(e) => setSender(e.currentTarget.value)}
           disabled={loading}
@@ -81,7 +81,7 @@ export default function MessageForm() {
           Message
         </label>
         <textarea
-          className="resize-none min-h-28 overflow-y-auto gap-2 p-2 rounded-lg bg-neutral-900 border border-neutral-800"
+          className="resize-none min-h-28 overflow-y-auto gap-2 p-2 rounded-lg border border-neutral-800 bg-transparent"
           value={message}
           onChange={(e) => setMessage(e.currentTarget.value)}
           disabled={loading}

@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <section className="flex flex-col justify-center mt-20">
       <div className="text-balance text-center mt-14 md:mt-28 space-y-1.5">
-        <h1 className="text-5xl md:text-7xl font-extrabold glow">FlowerGram</h1>
+        <h1 className="text-6xl md:text-7xl font-extrabold glow">FlowerGram</h1>
         <span className="flex mx-auto text-base md:text-lg glow max-w-md text-balance">Send personalised digital flowers and messages to anyone, anywhere, absolutely free.</span>
       </div>
       <div className="flex mx-auto mt-10 gap-6">

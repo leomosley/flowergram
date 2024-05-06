@@ -63,6 +63,7 @@ export default function MessageForm() {
           onChange={(e) => setRecipient(e.currentTarget.value)}
           disabled={loading}
           autoFocus
+          autoCorrect='false'
         />
       </div>
       <div className="flex flex-col">
@@ -74,6 +75,7 @@ export default function MessageForm() {
           value={sender}
           onChange={(e) => setSender(e.currentTarget.value)}
           disabled={loading}
+          autoCorrect='false'
         />
       </div>
       <div className="flex flex-col">

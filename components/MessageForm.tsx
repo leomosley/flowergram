@@ -88,13 +88,13 @@ export default function MessageForm() {
         />
       </div>
       <div className="flex gap-2">
-        <div className="flex-1 grid grid-cols-2 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-2 p-2 rounded-lg bg-neutral-900 border border-neutral-800">
+        <div className="flex-1 grid grid-cols-2 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-2 p-2 rounded-lg border border-neutral-800 bg-transparent">
           {flowers.map((f) => (
             <button
             key={f.id}
             className={clsx(
-              "flex-1 px-2 md:px-4 bg-neutral-700 rounded",
-              flower === f.id && "bg-neutral-700/60",
+              "flex-1 px-2 md:px-4 rounded",
+              flower === f.id ? "bg-neutral-700/75" : "bg-neutral-700/40",
               "text-xl md:text-2xl"
             )}
             onClick={() => setFlower(f.id)}
@@ -104,13 +104,13 @@ export default function MessageForm() {
             </button>
           ))}
         </div>
-          <div className="grid grid-cols-3 grid-rows-3 gap-2 p-2 rounded-lg bg-neutral-900 border border-neutral-800">
+          <div className="grid grid-cols-3 grid-rows-3 gap-2 p-2 rounded-lg border border-neutral-800 bg-transparent">
             {colours.map((c, index) => (
               <button
               key={index}
               className={clsx(
-                "w-10 h-10 rounded",
-                colour === index && "border"
+                "w-10 h-10 rounded box-border",
+                colour === index && "border-2"
               )}
               style={{ background: c }}
               onClick={() => setColour(index)}
@@ -123,12 +123,15 @@ export default function MessageForm() {
       </div>
       <div className="flex">
         <button
-          className="flex gap-2 rounded-lg p-2 bg-neutral-900 border border-neutral-800"
+          className={clsx(
+            "flex gap-2 items-center p-2 rounded-xl glow bg-neutral-950 border",
+            "transition duration-300 hover:shadow-[0_0_2rem_-0.5rem_#fff8]"
+          )}
           onClick={generate}
           disabled={loading}
           aria-label='share'
           >
-            Send <HiOutlinePaperAirplane className="text-xl rotate-45 -mr-1"/>
+            Send <HiOutlinePaperAirplane className="text-xl rotate-45 -mt-1 -mr-1"/>
         </button>
       </div>
     </div>

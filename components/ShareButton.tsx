@@ -34,9 +34,10 @@ export default function ShareButton({
     <button
       id="share"
       className={clsx(
-        "flex gap-1 items-center p-2 glow bg-neutral-950 border border-neutral-950",
+        "flex gap-1 items-center p-2 glow bg-neutral-950 border",
         "transition duration-300 hover:shadow-[0_0_2rem_-0.5rem_#fff8]",
         !className && "rounded-xl",
+        !className && "border-neutral-950",
         className,
       )}
       aria-label="share"

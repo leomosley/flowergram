@@ -25,11 +25,11 @@ export default function MessagePage() {
   }, [searchParams]);
 
   return (
-    <section className="absolute inset-0 flex items-end justify-center min-h-dvh">
+    <section className="absolute inset-0 flex items-end justify-center min-h-vh">
       {recipientParam && (
         <div 
           className={clsx(
-            "absolute top-1/4 -mt-20 left-1/4 p-2 rounded-xl border",
+            "absolute top-1/4 -mt-20 left-10 md:left-1/4 p-2 rounded-xl border",
             "backdrop-blur-xl glow -rotate-12"
           )}
         >
@@ -39,7 +39,7 @@ export default function MessagePage() {
       {senderParam && (
         <div 
           className={clsx(
-            "absolute top-1/4 -mt-20 right-1/4 p-2 rounded-xl border",
+            "absolute top-1/4 -mt-20 right-10 md:right-1/4 p-2 rounded-xl border",
             "backdrop-blur-xl glow rotate-12"
           )}
         >

@@ -54,7 +54,7 @@ export default function MessageForm() {
     />
     <div className="flex flex-col gap-2 p-4 backdrop-blur-xl border border-neutral-800 rounded-xl">
       <div className="flex flex-col">
-        <label className="font-bold">
+        <label className="font-bold glow">
           To
         </label>
         <input 
@@ -66,7 +66,7 @@ export default function MessageForm() {
         />
       </div>
       <div className="flex flex-col">
-        <label className="font-bold">
+        <label className="font-bold glow">
           From
         </label>
         <input 
@@ -77,7 +77,7 @@ export default function MessageForm() {
         />
       </div>
       <div className="flex flex-col">
-        <label className="font-bold">
+        <label className="font-bold glow">
           Message
         </label>
         <textarea
@@ -93,7 +93,7 @@ export default function MessageForm() {
             <button
             key={f.id}
             className={clsx(
-              "flex-1 px-2 md:px-4 rounded",
+              "flex-1 px-2 md:px-4 rounded transition",
               flower === f.id ? "bg-neutral-700/75" : "bg-neutral-700/40",
               "text-xl md:text-2xl"
             )}
@@ -124,7 +124,7 @@ export default function MessageForm() {
       <div className="flex">
         <button
           className={clsx(
-            "flex gap-2 items-center p-2 rounded-xl glow bg-neutral-950 border",
+            "flex gap-2 items-center p-2 rounded-lg glow bg-neutral-950 border",
             "transition duration-300 hover:shadow-[0_0_2rem_-0.5rem_#fff8]"
           )}
           onClick={generate}

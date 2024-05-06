@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { flowers, colours } from '@/flowers';
-import { HiOutlinePaperAirplane } from 'react-icons/hi';
+import { HiOutlinePaperAirplane, HiOutlineTrash } from 'react-icons/hi';
 import clsx from 'clsx';
 import Modal from './Modal';
 
@@ -46,6 +46,16 @@ export default function MessageForm() {
     });
     setUrl(url);
     setOpen(true);
+    setLoading(false);
+  }
+
+  const clear = () => {
+    setLoading(true);
+    setSender("");
+    setRecipient("");
+    setMessage("");
+    setFlower(0);
+    setColour(0);
     setLoading(false);
   }
 
@@ -130,11 +140,22 @@ export default function MessageForm() {
             ))}
           </div>
       </div>
-      <div className="flex">
+      <div className="flex gap-2">
+        <button
+          className={clsx(
+            "flex gap-2 items-center p-2 rounded-lg glow bg-neutral-950 border border-neutral-800",
+            "transition duration-300 hover:shadow-[0_0_2rem_-0.5rem_#fff8]"
+          )}
+          onClick={clear}
+          disabled={loading}
+          aria-label='share'
+          >
+            Clear <HiOutlineTrash className="text-xl"/>
+        </button>
         <button
           className={clsx(
             "flex gap-2 items-center p-2 rounded-lg glow bg-neutral-950 border",
-            "transition duration-300 hover:shadow-[0_0_2rem_-0.5rem_#fff8]"
+            "ml-auto transition duration-300 hover:shadow-[0_0_2rem_-0.5rem_#fff8]"
           )}
           onClick={generate}
           disabled={loading}

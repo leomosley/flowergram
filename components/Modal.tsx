@@ -43,7 +43,7 @@ export default function Modal({
       onClick={() => setOpen!(false)}
     >
       <div className={clsx(
-        "absolute p-2 rounded top-5 mx-auto transition-opacity",
+        "absolute p-2 rounded top-5 mx-auto transition-opacity duration-300",
         "bg-neutral-950 border border-neutral-200",
         showPopup ? "opacity-100" : "opacity-0" 
       )}>
@@ -66,7 +66,7 @@ export default function Modal({
           </button>
         </div>
         <div className="flex items-center gap-2 p-2 rounded border">
-          <span className="text-2xl">🌺</span>
+          <span className="text-xl md:text-2xl">🌺</span>
           <span className="font-mono glow text-sm md:text-base">flowergram.vercel.app/message</span>
           <button
             className={clsx(
@@ -89,14 +89,14 @@ export default function Modal({
             <ShareButton 
               className="rounded border-gray-200"
               url={url}
-              />
+            />
             <button
               className={clsx(
                 "flex gap-1 items-center p-2 rounded glow bg-neutral-950 border border-gray-200",
                 "transition duration-300 hover:shadow-[0_0_2rem_-0.5rem_#fff8]"
               )}
               onClick={() => window.open(url ?? defaultUrl, "_blank")}
-              >
+            >
               <HiOutlineExternalLink className="w-5 h-5" />
               <span className="">Open</span>
             </button>

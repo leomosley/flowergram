@@ -2,7 +2,7 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import clsx from 'clsx';
 import ShareButton from './ShareButton';
-import { HiLink, HiOutlineExternalLink, HiX } from 'react-icons/hi';
+import { HiLink, HiOutlineExternalLink, HiPencil, HiX } from 'react-icons/hi';
 
 export default function Modal({
   url,
@@ -42,15 +42,22 @@ export default function Modal({
       )}
       onClick={() => setOpen!(false)}
     >
+      <div className={clsx(
+        "absolute p-2 rounded top-5 mx-auto transition-opacity",
+        "bg-neutral-950 border border-neutral-200",
+        showPopup ? "opacity-100" : "opacity-0" 
+      )}>
+        <span className="glow">Copied to clipboard 💐</span>
+      </div>
       <div 
         className={clsx(
-          "absolute top-1/3 p-4 z-60 cursor-default",
-          "rounded-lg bg-neutral-900 border border-neutral-800"
+          "absolute top-1/3 p-4 z-60 cursor-default space-y-4",
+          "rounded-lg bg-neutral-950 border border-gray-200"
         )}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex">
-          <h1 className="text-lg font-bold glow">Share Now</h1>
+          <h1 className="text-lg font-bold glow">Share your FlowerGram now</h1>
           <button
             className="ml-auto glow"
             onClick={() => setOpen(false)}
@@ -58,38 +65,42 @@ export default function Modal({
             <HiX />
           </button>
         </div>
-        <hr className="my-2 border-neutral-700"></hr>
-        <div className="flex glow">
-          {recipient && <span className="flex flex-1 p-2 mr-2 rounded border border-neutral-700">To: {recipient}</span>}
-          {sender && <span className="flex flex-1 p-2 rounded border border-neutral-700">From: {sender}</span>}
-        </div>
-        {(sender || recipient) && <hr className="my-2 border-neutral-700"></hr>}
-        <p className="p-2 rounded max-w-80 glow text-nowrap overflow-hidden border border-neutral-800">{(url ?? defaultUrl).split('//')[1]}</p>
-        <hr className="my-2 border-neutral-700"></hr>
-        <div className="flex justify-center gap-2 mt-2">
+        <div className="flex items-center gap-2 p-2 rounded border">
+          <span className="text-2xl">🌺</span>
+          <span className="font-mono glow">flowergram.vercel.app/message</span>
           <button
             className={clsx(
-              "flex gap-1 items-center p-2 rounded-xl glow bg-neutral-950 border border-neutral-950",
-              "transition duration-300 hover:shadow-[0_0_2rem_-0.5rem_#fff8]"
+              "flex items-center p-1 rounded glow",
             )}
             onClick={() => copy(url ?? defaultUrl)}
           >
             <HiLink className="w-5 h-5" />
-            <span className="">Copy Link</span>
           </button>
-          <ShareButton 
-            url={url}
-          />
-          <button
-            className={clsx(
-              "flex gap-1 items-center p-2 rounded-xl glow bg-neutral-950 border border-neutral-950",
-              "transition duration-300 hover:shadow-[0_0_2rem_-0.5rem_#fff8]"
-            )}
-            onClick={() => window.open(url ?? defaultUrl, "_blank")}
+        </div>
+        <div className="flex">
+          <button 
+            className="flex gap-1 items-center p-1"
+            onClick={() => setOpen(false)}
           >
-            <HiOutlineExternalLink className="w-5 h-5" />
-            <span className="">Open</span>
+            <span className="">Edit </span>
+            <HiPencil className="w-4 h-4" />
           </button>
+          <div className="flex ml-auto gap-2">
+            <ShareButton 
+              className="rounded border-gray-200"
+              url={url}
+              />
+            <button
+              className={clsx(
+                "flex gap-1 items-center p-2 rounded glow bg-neutral-950 border border-gray-200",
+                "transition duration-300 hover:shadow-[0_0_2rem_-0.5rem_#fff8]"
+              )}
+              onClick={() => window.open(url ?? defaultUrl, "_blank")}
+              >
+              <HiOutlineExternalLink className="w-5 h-5" />
+              <span className="">Open</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>

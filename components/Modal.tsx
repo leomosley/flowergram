@@ -67,7 +67,7 @@ export default function Modal({
         </div>
         <div className="flex items-center gap-2 p-2 rounded border">
           <span className="text-2xl">🌺</span>
-          <span className="font-mono glow">flowergram.vercel.app/message</span>
+          <span className="font-mono glow text-sm md:text-base">flowergram.vercel.app/message</span>
           <button
             className={clsx(
               "flex items-center p-1 rounded glow",

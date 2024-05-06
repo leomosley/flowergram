@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { flowers, colours } from '@/flowers';
 import { HiOutlinePaperAirplane } from 'react-icons/hi';
 import clsx from 'clsx';
@@ -14,6 +14,13 @@ export default function MessageForm() {
   const [sender, setSender] = useState<string>("");
   const [url, setUrl] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    document.body.style.overflowY = open ? 'hidden' : 'auto';
+    window.scrollTo({
+      top: 0
+    });
+  }, [open]);
 
   const generate = () => {
     setLoading(true);

@@ -24,36 +24,42 @@ export default function MessagePage() {
     document.body.style.overflowY = 'hidden';
   }, [searchParams]);
 
+  const Message = ({ message } : { message: string }) => {
+    return (
+      <div 
+        className={clsx(
+          "flex p-4 bg-neutral-950 glow font-medium",
+          "border-4 border-gray-200"
+        )}
+      >
+        <div className="absolute bg-gray-200 w-[4px] h-[4px] top-[4px] left-[4px]"></div>
+        <div className="absolute bg-gray-200 w-[4px] h-[4px] bottom-[4px] left-[4px]"></div>
+        <div className="absolute bg-gray-200 w-[4px] h-[4px] top-[4px] right-[4px]"></div>
+        <div className="absolute bg-gray-200 w-[4px] h-[4px] bottom-[4px] right-[4px]"></div>
+        <div className="absolute bg-neutral-950 w-[4px] h-[4px] top-0 left-0"></div>
+        <div className="absolute bg-neutral-950 w-[4px] h-[4px] bottom-0 left-0"></div>
+        <div className="absolute bg-neutral-950 w-[4px] h-[4px] top-0 right-0"></div>
+        <div className="absolute bg-neutral-950 w-[4px] h-[4px] bottom-0 right-0"></div>
+        {message}
+      </div>
+    );
+  }
+
   return (
     <section className="absolute inset-0 flex items-end justify-center min-h-vh">
       {recipientParam && (
-        <div 
-          className={clsx(
-            "absolute top-1/4 -mt-20 left-10 md:left-1/4 p-2 rounded-xl border",
-            "backdrop-blur-xl glow -rotate-12"
-          )}
-        >
-          To: {recipientParam}
+        <div className="absolute top-1/4 -mt-20 left-10 md:left-1/4">
+          <Message message={`To: ${recipientParam}`} />
         </div>
       )}
       {senderParam && (
-        <div 
-          className={clsx(
-            "absolute top-1/4 -mt-20 right-10 md:right-1/4 p-2 rounded-xl border",
-            "backdrop-blur-xl glow rotate-12"
-          )}
-        >
-          From: {senderParam}
+        <div className="absolute top-1/4 -mt-20 right-10 md:right-1/4">
+          <Message message={`From: ${senderParam}`} />
         </div>
       )}
       {messageParam && (
-        <div 
-          className={clsx(
-            "absolute flex justify-center bottom-1/4 mx-auto p-2 rounded-xl border z-50",
-            "backdrop-blur-xl glow"
-          )}
-        >
-          {messageParam}
+        <div className={"absolute bottom-1/4 mx-auto z-50"}>
+          <Message message={messageParam} />
         </div>
       )}
       {flower && flower.component}

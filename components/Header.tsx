@@ -10,12 +10,12 @@ export default function Header() {
   return !pathname.startsWith('/message') && (
     <div className="flex">
       <Link
-        className="h-10 w-10"
+        className="w-7 h-7 md:h-10 md:w-10"
         href="/"
       ><LuFlower className="w-full h-full" />
       </Link>
       <Link
-        className="h-10 w-10 ml-auto"
+        className="w-7 h-7 md:h-10 md:w-10 ml-auto"
         href="/new"
       ><HiOutlinePencilAlt className="w-full h-full" />
       </Link>

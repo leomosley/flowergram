@@ -28,8 +28,8 @@ export default function MessagePage() {
     return (
       <div 
         className={clsx(
-          "flex p-4 bg-neutral-950 glow font-medium",
-          "border-4 border-gray-200"
+          "flex p-4 bg-neutral-950 glow max-w-60 md:max-w-80",
+          "font-medium text-balance text-center border-4 border-gray-200"
         )}
       >
         <div className="absolute bg-gray-200 w-[4px] h-[4px] top-[4px] left-[4px]"></div>
@@ -46,14 +46,14 @@ export default function MessagePage() {
   }
 
   return (
-    <section className="absolute inset-0 flex items-end justify-center min-h-vh">
+    <section className="flex justify-center">
       {recipientParam && (
-        <div className="absolute top-1/4 -mt-20 left-10 md:left-1/4">
+        <div className="absolute top-1/4 -mt-12 left-10 md:left-1/4">
           <Message message={`To: ${recipientParam}`} />
         </div>
       )}
       {senderParam && (
-        <div className="absolute top-1/4 -mt-20 right-10 md:right-1/4">
+        <div className="absolute top-1/4 -mt-12 right-10 md:right-1/4">
           <Message message={`From: ${senderParam}`} />
         </div>
       )}
@@ -62,7 +62,9 @@ export default function MessagePage() {
           <Message message={messageParam} />
         </div>
       )}
-      {flower && flower.component}
+      <div className="absolute bottom-10">
+        {flower && flower.component}
+      </div>
     </section>
   );
 }

@@ -1,10 +1,10 @@
 'use client';
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import clsx from 'clsx';
-import ShareButton from './ShareButton';
+import { ShareButton } from './share-button';
 import { HiLink, HiOutlineExternalLink, HiPencil, HiX } from 'react-icons/hi';
 
-export default function Modal({
+export function Modal({
   url,
   setUrl,
   open,

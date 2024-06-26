@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { flowers, colours } from '@/flowers';
 import { HiOutlinePaperAirplane, HiOutlineTrash } from 'react-icons/hi';
 import clsx from 'clsx';
-import Modal from './Modal';
+import { Modal } from './modal';
 
-export default function MessageForm() {
+export function MessageForm() {
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
   const [colour, setColour] = useState<number>(0);

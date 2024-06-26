@@ -1,8 +1,10 @@
 'use client';
+
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { colours, Flower, flowers } from '@/flowers/index';
 import clsx from 'clsx';
+import { TestModel} from '@/components/test-model';
 
 export default function MessagePage() {
   const searchParams = useSearchParams();
@@ -63,7 +65,7 @@ export default function MessagePage() {
         </div>
       )}
       <div className="absolute bottom-10">
-        {flower && flower.component}
+        <TestModel />
       </div>
     </section>
   );

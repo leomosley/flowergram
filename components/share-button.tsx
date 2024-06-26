@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import React from 'react'
 import { HiShare } from 'react-icons/hi';
 
-export default function ShareButton({
+export function ShareButton({
   title,
   text,
   url,

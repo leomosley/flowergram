@@ -5,7 +5,7 @@ import { HiOutlinePencilAlt } from 'react-icons/hi';
 import { LuFlower2, LuFlower } from 'react-icons/lu';
 import { usePathname } from 'next/navigation';
 
-export default function Header() {
+export function Header() {
   const pathname = usePathname();
   return !pathname.startsWith('/message') && (
     <div className="flex">

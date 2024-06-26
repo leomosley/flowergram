@@ -1,16 +1,7 @@
-import React from 'react';
-import Lily from './Lily';
-import Tulip from './Tulip';
-import Rose from './Rose';
-import Daisy from './Daisy';
-import CherryBlossom from './CherryBlossom';
-import Sunflower from './Sunflower';
-
 export interface Flower {
   id: number;
   name: string;
   icon: string;
-  component: React.JSX.Element;
 }
 
 export const colours: string[] = [
@@ -26,10 +17,10 @@ export const colours: string[] = [
 ];
 
 export const flowers: Flower[] = [
-  { id: 0, name: "Lily", icon: "🌺", component: <Lily />},
-  { id: 1, name: "Rose", icon: "🌷", component: <Rose />},
-  { id: 2, name: "Tulip", icon: "🌹", component: <Tulip />},
-  { id: 3, name: "Daisy", icon: "🌼", component: <Daisy />},
-  { id: 4, name: "Sunflower", icon: "🌻", component: <Sunflower />},
-  { id: 5, name: "Cherry Blossom", icon: "🌸", component: <CherryBlossom />},
+  { id: 0, name: "Lily", icon: "🌺" },
+  { id: 1, name: "Rose", icon: "🌷" },
+  { id: 2, name: "Tulip", icon: "🌹" },
+  { id: 3, name: "Daisy", icon: "🌼" },
+  { id: 4, name: "Sunflower", icon: "🌻" },
+  { id: 5, name: "Cherry Blossom", icon: "🌸" }
 ];

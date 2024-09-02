@@ -1,4 +1,4 @@
-import ShareButton from "@/components/ShareButton";
+import { ShareButton } from "@/components/share-button";
 import clsx from "clsx";
 import Link from "next/link";
 import React from "react";
@@ -38,7 +38,7 @@ export default function Home() {
           <FaGithub />
           <span className="">GitHub</span>
         </a>
-        <ShareButton 
+        <ShareButton
           text='Send personalised digital flowers and messages to anyone, anywhere, absolutely free.'
         />
       </div>

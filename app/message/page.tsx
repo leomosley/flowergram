@@ -3,7 +3,7 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { colours, Flower, flowers } from '@/components/flowers';
-import { TestModel } from '@/components/flowers/test-model';
+import { Model } from '@/components/flowers/model';
 import { Canvas } from '@react-three/fiber';
 
 export default function MessagePage() {
@@ -32,7 +32,7 @@ export default function MessagePage() {
       <Canvas className="w-full h-full">
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} />
-        <TestModel />
+        <Model modelPath='trex' />
       </Canvas>
     </section>
   );

@@ -6,8 +6,8 @@ import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 
 
-export function TestModel() {
-  const gltf = useGLTF('/models/trex/scene.gltf');
+export function Model({ modelPath }: { modelPath: string }) {
+  const gltf = useGLTF(`/models/${modelPath}/scene.gltf`);
   const groupRef = useRef<THREE.Group>(null);
   const { clock } = useThree();
   const [error, setError] = useState<string | null>(null);

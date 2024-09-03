@@ -4,7 +4,7 @@ export interface Flower {
   icon: string;
 }
 
-export const colours: string[] = [
+export const colors: string[] = [
   "#5eead4", // teal-300
   "#8b5cf6", // violet-500
   "#ec4899", // pink-500

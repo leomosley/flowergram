@@ -1,9 +1,8 @@
-import React from 'react';
-import { MessageForm } from '@/components/message-form';
+import { MessageForm } from '@/components/new/message-form';
 
 export default function New() {
   return (
-    <section className="flex justify-center mt-20">
+    <section className="flex h-full pb-12 justify-center">
       <MessageForm />
     </section>
   )

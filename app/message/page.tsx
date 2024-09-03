@@ -2,7 +2,7 @@
 
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { colours, Flower, flowers } from '@/components/flowers';
+import { colors, Flower, flowers } from '@/components/flowers';
 import { Model } from '@/components/flowers/model';
 import { Canvas } from '@react-three/fiber';
 
@@ -19,7 +19,7 @@ export default function MessagePage() {
 
   useEffect(() => {
     setFlower(flowers[Number(flowerParam)]);
-    setColour(colours[Number(colourParam)]);
+    setColour(colors[Number(colourParam)]);
   }, [flowerParam, colourParam]);
 
   useLayoutEffect(() => {

@@ -1,4 +1,4 @@
-import ClientOnly from "@/components/client-only";
+import ClientOnly from "@/components/shared/client-only";
 
 export default function RootLayout({
   children,

@@ -1,4 +1,4 @@
-import { ShareButton } from "@/components/share-button";
+import { ShareButton } from "@/components/shared/share-button";
 import clsx from "clsx";
 import Link from "next/link";
 import React from "react";

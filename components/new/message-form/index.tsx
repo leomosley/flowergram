@@ -12,7 +12,7 @@ import { ChevronLeft, ChevronRight, ExternalLink, Link, Plane, Send } from "luci
 import { Textarea } from "@/components/ui/textarea";
 import { colors, flowers } from "@/components/flowers";
 import { cn } from "@/lib/utils";
-import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ShareButton } from "@/components/shared/share-button";
 import { toast } from "sonner";
 
@@ -145,7 +145,7 @@ export function MessageForm() {
             </DialogTrigger>
             <DialogContent className="w-[350px]">
               <DialogHeader>
-                <Label className="font-semibold">share your flowergram now</Label>
+                <DialogTitle>share your flowergram now</DialogTitle>
               </DialogHeader>
               <div className="flex items-center gap-2 w-fit border p-2 rounded-md">
                 <span className="font-mono text-sm md:text-base">flowergram.vercel.app/message</span>

@@ -26,10 +26,8 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <main className="flex flex-col h-screen p-4 mx-auto md:max-w-5xl">
-            <Header />
-            {children}
-          </main>
+          <Header />
+          {children}
           <Toaster />
         </ThemeProvider>
       </body>

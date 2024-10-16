@@ -1,5 +1,8 @@
-import { ShareButton } from "@/components/shared/share-button";
-import clsx from "clsx";
+import { GridPattern } from "@/components/ui/animated-grid-pattern";
+import { BlurFade } from "@/components/ui/blur-fade";
+import { Button } from "@/components/ui/button";
+import { WordFadeIn } from "@/components/ui/word-fade-in";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
 import { FaGithub } from "react-icons/fa6";
@@ -7,41 +10,56 @@ import { HiOutlinePencilAlt } from "react-icons/hi";
 
 export default function Home() {
   return (
-    <section className="flex flex-col justify-center mt-20">
-      <div className="text-balance text-center mt-14 md:mt-28 space-y-1.5">
-        <h1 className="text-6xl md:text-7xl font-extrabold glow">FlowerGram</h1>
-        <span className="flex mx-auto text-base md:text-lg glow max-w-md text-balance">Send personalised digital flowers and messages to anyone, anywhere, absolutely free.</span>
-      </div>
-      <div className="flex mx-auto mt-10 gap-6">
-        <Link
-          id="create"
-          className={clsx(
-            "flex flex-1 gap-1 items-center p-2 rounded-xl glow bg-neutral-950 border",
-            "transition duration-300 hover:shadow-[0_0_2rem_-0.5rem_#fff8]"
-          )}
-          href={'/new'}
-          aria-label="create"
-        >
-          <HiOutlinePencilAlt className="w-5 h-5" />
-          <span className="">Create</span>
-        </Link>
-        <a
-          id="github"
-          className={clsx(
-            "flex flex-1 gap-1 items-center p-2 rounded-xl glow bg-neutral-950 border border-neutral-950",
-            "transition duration-300 hover:shadow-[0_0_2rem_-0.5rem_#fff8]"
-          )}
-          href="https://github.com/leomosley/flowergram"
-          target="_blank"
-          aria-label="github"
-        >
-          <FaGithub />
-          <span className="">GitHub</span>
-        </a>
-        <ShareButton
-          text='Send personalised digital flowers and messages to anyone, anywhere, absolutely free.'
+    <main className="relative flex min-h-screen w-full items-center justify-center overflow-hidden rounded-lg border bg-background">
+      <div className="text-balance -mt-24 text-center">
+        <WordFadeIn
+          className="z-10 whitespace-pre-wrap text-center text-6xl font-medium  text-black tracking-tighter"
+          words="FlowerGram"
         />
+        <WordFadeIn
+          className="z-10 mb-4 text-balance whitespace-pre-wrap text-center text-xl sm:text-2l md:text-3xl font-medium/relaxed text-neutral-800 tracking-tighter"
+          words="Personalised digital flowers & messages."
+          initialDelay={0.6}
+        />
+        <BlurFade
+          delay={1.5}
+        >
+          <div className="flex gap-2 justify-center">
+            <Link
+              href="/new"
+            >
+              <Button
+                className="flex items-center gap-1 px-4 rounded-full z-50"
+
+              >
+                Try it out
+                <HiOutlinePencilAlt className="w-4 h-4" />
+              </Button>
+            </Link>
+            <a
+              href="https://github.com/leomosley/flowergram"
+              target="_blank"
+            >
+              <Button
+                className="flex items-center gap-1 px-4 rounded-full z-50"
+              >
+                <span className="">GitHub</span>
+                <FaGithub className="w-4 h-4" />
+              </Button>
+            </a>
+          </div>
+        </BlurFade>
       </div>
-    </section>
+      <GridPattern
+        numSquares={40}
+        maxOpacity={0.1}
+        duration={3}
+        repeatDelay={1}
+        className={cn(
+          "[mask-image:radial-gradient(100vh_circle_at_center,white,transparent)]",
+          "inset-x-0 inset-y-[-50%] h-[200%]",
+        )}
+      />
+    </main>
   );
 }

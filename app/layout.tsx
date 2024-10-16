@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/shared/header";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+import { Nav } from "@/components/shared/nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +26,7 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <Header />
+          <Nav />
           {children}
           <Toaster />
         </ThemeProvider>

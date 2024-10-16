@@ -1,40 +1,44 @@
 "use client"
 
-import * as React from "react"
-import { Moon, Sun } from "lucide-react"
-import { useTheme } from "next-themes"
+import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
+import { Monitor, Sun, Moon } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 
-import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+export function ThemeToggle() {
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
 
-export function ToggleTheme() {
-  const { setTheme } = useTheme();
+  const themes = [
+    { name: "system", icon: <Monitor className="w-4 h-4" /> },
+    { name: "light", icon: <Sun className="w-4 h-4" /> },
+    { name: "dark", icon: <Moon className="w-4 h-4" /> },
+  ];
+
+  useEffect(() => {
+    setMounted(true)
+  }, []);
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
+    <div className="flex items-center justify-center space-x-2 bg-background border rounded-full p-1">
+      {themes.map((item, index) => (
+        mounted ? (
+          <button
+            key={item.name}
+            onClick={() => setTheme(item.name)}
+            className={`flex items-center justify-center w-8 h-8 rounded-full ${theme === item.name ? "bg-muted border" : ""
+              }`}
+            aria-label={`${item.name} theme`}
+          >
+            {item.icon}
+          </button>
+        ) : (
+          <Skeleton
+            key={index}
+            className="w-8 h-8 rounded-full"
+          />
+        )
+      ))}
+    </div>
+  );
 }

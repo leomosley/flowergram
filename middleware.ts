@@ -28,7 +28,7 @@ export async function middleware(request: NextRequest) {
     secret: process.env.NEXTAUTH_SECRET,
   });
 
-  if (!token && !(request.nextUrl.pathname !== "/" || request.nextUrl.pathname.startsWith("/sign-in"))) {
+  if (!token && !(request.nextUrl.pathname === "/" || request.nextUrl.pathname.startsWith("/sign-in"))) {
     return NextResponse.redirect(new URL("/sign-in", request.nextUrl));
   }
 

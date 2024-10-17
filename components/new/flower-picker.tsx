@@ -16,7 +16,7 @@ export function FlowerPicker({
   return (
     <div className="grid grid-rows-2 grid-cols-3 gap-2">
       {flowers.map((flower) => (
-        <TooltipProvider>
+        <TooltipProvider key={flower.id}>
           <Tooltip>
             <TooltipTrigger asChild>
               <Button

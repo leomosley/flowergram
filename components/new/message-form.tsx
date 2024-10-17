@@ -29,6 +29,7 @@ import { FlowerPicker } from "@/components/new/flower-picker";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger
@@ -36,8 +37,14 @@ import {
 import { createMessage } from "@/actions/create-message";
 import { messageFormSchema } from "@/lib/zod";
 import { toast } from "sonner";
+import { useState } from "react";
+import { ExternalLink, Link } from "lucide-react";
+import { ShareButton } from "../shared/share-button";
 
 export function MessageForm() {
+  const [id, setId] = useState<string>();
+  const [open, setOpen] = useState<boolean>(false);
+
   const form = useForm<z.infer<typeof messageFormSchema>>({
     resolver: zodResolver(messageFormSchema),
     defaultValues: {
@@ -47,9 +54,9 @@ export function MessageForm() {
       flower: 0,
       colour: "#FFF"
     },
-  })
+  });
 
-  function onSubmit(values: z.infer<typeof messageFormSchema>) {
+  async function onSubmit(values: z.infer<typeof messageFormSchema>) {
     const parse = messageFormSchema.safeParse(values);
 
     if (!parse.success) {
@@ -57,112 +64,148 @@ export function MessageForm() {
     }
 
     const data = parse.data;
-    createMessage(data);
+    const response = await createMessage(data);
+
+    if (!response) return toast.warning('Error creating message.');
+
+    setId(response.id);
+    setOpen(true);
+
   }
 
   return (
-    <Card className="w-full max-w-[425px]">
-      <CardHeader>
-        <CardTitle>New message</CardTitle>
-        <CardDescription>Send a new message to someone.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <div className="flex gap-4 justify-between">
+    <>
+      <Card className="w-full max-w-[425px]">
+        <CardHeader>
+          <CardTitle>New message</CardTitle>
+          <CardDescription>Send a new message to someone.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              <div className="flex gap-4 justify-between">
+                <FormField
+                  control={form.control}
+                  name="recipient"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input placeholder="To" {...field} />
+                      </FormControl>
+                      <FormDescription>
+                        Who is this message for?
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="sender"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input placeholder="From" {...field} />
+                      </FormControl>
+                      <FormDescription>
+                        Who is it from?
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
               <FormField
                 control={form.control}
-                name="recipient"
+                name="message"
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input placeholder="To" {...field} />
+                      <Textarea placeholder="Message" {...field} />
                     </FormControl>
                     <FormDescription>
-                      Who is this message for?
+                      Add a message.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              <FormField
-                control={form.control}
-                name="sender"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="From" {...field} />
-                    </FormControl>
-                    <FormDescription>
-                      Who is it from?
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-            <FormField
-              control={form.control}
-              name="message"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Textarea placeholder="Message" {...field} />
-                  </FormControl>
-                  <FormDescription>
-                    Add a message.
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
+              <div className="flex gap-4 justify-between">
+                <FormField
+                  control={form.control}
+                  name="flower"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <FlowerPicker {...field} />
+                      </FormControl>
+                      <FormDescription>
+                        Choose the flower.
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="colour"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <ColorPicker {...field} />
+                      </FormControl>
+                      <FormDescription>
+                        Choose the folower colour.
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <Button type="submit">Send</Button>
+            </form>
+          </Form>
+        </CardContent>
+        <CardFooter></CardFooter>
+      </Card>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Share</DialogTitle>
+            <DialogDescription>Share this link with the person this message is for {":)"}</DialogDescription>
+          </DialogHeader>
+          <div className="flex items-center gap-2 border p-2 rounded-md">
+            <code className="text-sm md:text-base">{`flowergram.vercel.app/message/${id}`}</code>
+            <Button
+              className="rounded-md bg-muted/50 ml-auto"
+              onClick={() => {
+                navigator.clipboard.writeText(`https://flowergram.vercel.app/message/${id}`);
+                toast.success("Link coppied to clipboard!")
+              }}
+              size="icon"
+              variant="outline"
+            >
+              <Link className="w-4 h-4" />
+            </Button>
+          </div>
+          <div className="flex justify-center gap-2">
+            <ShareButton
+              title="flowergam"
+              text="open to see your message :)"
+              url={`https://flowergram.vercel.app/message/${id}`}
             />
-            <div className="flex gap-4 justify-between">
-              <FormField
-                control={form.control}
-                name="flower"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <FlowerPicker {...field} />
-                    </FormControl>
-                    <FormDescription>
-                      Choose the flower.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="colour"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <ColorPicker {...field} />
-                    </FormControl>
-                    <FormDescription>
-                      Choose the folower colour.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-            <Button type="submit">Submit</Button>
-            <Dialog>
-              <DialogTrigger asChild>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Share</DialogTitle>
-                </DialogHeader>
-
-              </DialogContent>
-            </Dialog>
-          </form>
-        </Form>
-      </CardContent>
-      <CardFooter></CardFooter>
-    </Card>
-  )
+            <a
+              href={`https://flowergram.vercel.app/message/${id}`}
+              target="_blank"
+            >
+              <Button size="sm">
+                open
+                <ExternalLink className="ml-1 w-4 h-4" />
+              </Button>
+            </a>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </>
+  );
 }

@@ -13,7 +13,7 @@ export async function createMessage(data: {
 }) {
   const session = await getServerSession(authOptions);
 
-  if (!session) return { error: "unauth" };
+  if (!session) return;
 
   const createResponse = await prisma.message.create({
     data: {
@@ -22,6 +22,6 @@ export async function createMessage(data: {
     },
   });
 
-  if (!createResponse) return { error: "database error" }
+  if (!createResponse) return;
   return createResponse;
 }

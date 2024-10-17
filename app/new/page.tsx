@@ -1,12 +1,9 @@
-import { MessageForm } from '@/components/new/message-form';
-import { Suspense } from 'react';
+import { MessageForm } from "@/components/new/message-form";
 
 export default function New() {
   return (
-    <section className="flex h-full pb-12 justify-center">
-      <Suspense fallback={<p>loading...</p>}>
-        <MessageForm />
-      </Suspense>
+    <section className="flex h-screen py-12 justify-center items-center">
+      <MessageForm />
     </section>
   )
 }

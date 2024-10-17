@@ -39,7 +39,7 @@ import { messageFormSchema } from "@/lib/zod";
 import { toast } from "sonner";
 import { useState } from "react";
 import { ExternalLink, Link } from "lucide-react";
-import { ShareButton } from "../shared/share-button";
+import { ShareButton } from "@/components/shared/share-button";
 
 export function MessageForm() {
   const [id, setId] = useState<string>();

@@ -6,7 +6,7 @@ import { HiOutlinePencilAlt } from 'react-icons/hi';
 import { LuFlower } from 'react-icons/lu';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '../ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
-import { LogOut, Settings, User } from 'lucide-react';
+import { LogOut, Mail, Settings, User } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa6';
 
 export function Header({
@@ -15,7 +15,8 @@ export function Header({
   session: Session | null;
 }) {
   const nav = [
-    { icon: <User className="mr-2 h-4 w-4" />, label: "Account", href: "/account" },
+    { icon: <Mail className="mr-2 h-4 w-4" />, label: "My Messages", href: "/messages" },
+    { icon: <HiOutlinePencilAlt className="mr-2 h-4 w-4" />, label: "New Message", href: "/new" },
     { icon: <Settings className="mr-2 h-4 w-4" />, label: "Settings", href: "/settings" },
   ];
 

@@ -15,9 +15,9 @@ export function Header({
   session: Session | null;
 }) {
   const nav = [
-    { icon: <Mail className="mr-2 h-4 w-4" />, label: "My Messages", href: "/messages" },
+    { icon: <Mail className="mr-2 h-4 w-4" />, label: "My Messages", href: "/account/messages" },
     { icon: <HiOutlinePencilAlt className="mr-2 h-4 w-4" />, label: "New Message", href: "/new" },
-    { icon: <Settings className="mr-2 h-4 w-4" />, label: "Settings", href: "/settings" },
+    { icon: <Settings className="mr-2 h-4 w-4" />, label: "Settings", href: "/accoutn/settings" },
   ];
 
   return (

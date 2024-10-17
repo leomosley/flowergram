@@ -23,21 +23,23 @@ import {
   CardHeader,
   CardTitle
 } from "@/components/ui/card";
-import { Textarea } from "../ui/textarea";
-import { ColorPicker } from "../ui/color-picker";
-import { FlowerPicker } from "./flower-picker";
-
-const formSchema = z.object({
-  recipient: z.string(),
-  sender: z.string(),
-  message: z.string(),
-  flower: z.number().min(0).max(5),
-  colour: z.string(),
-});
+import { Textarea } from "@/components/ui/textarea";
+import { ColorPicker } from "@/components/ui/color-picker";
+import { FlowerPicker } from "@/components/new/flower-picker";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger
+} from "@/components/ui/dialog";
+import { createMessage } from "@/actions/create-message";
+import { messageFormSchema } from "@/lib/zod";
+import { toast } from "sonner";
 
 export function MessageForm() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof messageFormSchema>>({
+    resolver: zodResolver(messageFormSchema),
     defaultValues: {
       recipient: "",
       sender: "",
@@ -47,8 +49,15 @@ export function MessageForm() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
+  function onSubmit(values: z.infer<typeof messageFormSchema>) {
+    const parse = messageFormSchema.safeParse(values);
+
+    if (!parse.success) {
+      return toast.warning('Error with form input.');
+    }
+
+    const data = parse.data;
+    createMessage(data);
   }
 
   return (
@@ -60,7 +69,7 @@ export function MessageForm() {
       <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <div className="flex gap-6">
+            <div className="flex gap-4 justify-between">
               <FormField
                 control={form.control}
                 name="recipient"
@@ -107,7 +116,7 @@ export function MessageForm() {
                 </FormItem>
               )}
             />
-            <div className="flex justify-between">
+            <div className="flex gap-4 justify-between">
               <FormField
                 control={form.control}
                 name="flower"
@@ -140,6 +149,16 @@ export function MessageForm() {
               />
             </div>
             <Button type="submit">Submit</Button>
+            <Dialog>
+              <DialogTrigger asChild>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Share</DialogTitle>
+                </DialogHeader>
+
+              </DialogContent>
+            </Dialog>
           </form>
         </Form>
       </CardContent>

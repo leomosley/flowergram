@@ -27,6 +27,7 @@ export function FlowerPicker({
                 size="icon"
                 variant="ghost"
                 onClick={() => onChange(flower.id)}
+                type="button"
               >
                 <span className="text-2xl">{flower.icon}</span>
               </Button>

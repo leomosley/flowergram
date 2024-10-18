@@ -155,7 +155,7 @@ export function MessageForm() {
                         <ColorPicker {...field} />
                       </FormControl>
                       <FormDescription>
-                        Choose the folower colour.
+                        Choose the flower colour.
                       </FormDescription>
                       <FormMessage />
                     </FormItem>

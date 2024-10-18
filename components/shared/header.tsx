@@ -22,7 +22,7 @@ export function Header({
 
   return (
     <header className="fixed flex justify-center w-full p-2 z-20 backdrop-blur-xl border-b border-b-muted">
-      <div className="flex gap-2 w-full md:max-w-6xl justify-between">
+      <div className="flex gap-2 px-2 w-full md:max-w-6xl justify-between">
         <Link
           className="w-9 h-9 md:h-10 md:w-10"
           href="/"

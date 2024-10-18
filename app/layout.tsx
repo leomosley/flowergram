@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
-          enableSystem={false}
+          enableSystem={true}
           disableTransitionOnChange
         >
           <Nav />

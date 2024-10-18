@@ -1,5 +1,6 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import { DeleteAccount } from "@/components/account/settings/delete-account";
+import { EditAppearance } from "@/components/account/settings/edit-appearance";
 import { EditName } from "@/components/account/settings/edit-name";
 import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth";
@@ -16,6 +17,7 @@ export default async function SettingsPage() {
     user && (
       <>
         <EditName user={user} />
+        <EditAppearance />
         <DeleteAccount user={user} />
       </>
     )

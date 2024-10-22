@@ -11,13 +11,13 @@ import { HiOutlinePencilAlt } from "react-icons/hi";
 export default function Home() {
   return (
     <main className="relative flex min-h-screen w-full items-center justify-center overflow-hidden rounded-lg border bg-background">
-      <div className="text-balance -mt-24 text-center">
+      <div className="text-balance -mt-24 text-center z-10">
         <WordFadeIn
-          className="z-10 whitespace-pre-wrap text-center text-6xl font-medium  text-black tracking-tighter"
+          className="z-10 whitespace-pre-wrap text-center text-6xl font-medium text-primary tracking-tighter"
           words="FlowerGram"
         />
         <WordFadeIn
-          className="z-10 mb-4 text-balance whitespace-pre-wrap text-center text-xl sm:text-2l md:text-3xl font-medium/relaxed text-neutral-800 tracking-tighter"
+          className="z-10 mb-4 text-balance whitespace-pre-wrap text-center text-xl sm:text-2l md:text-3xl font-medium/relaxed text-primary/80     tracking-tighter"
           words="Personalised digital flowers & messages."
           initialDelay={0.6}
         />

@@ -9,13 +9,15 @@ import React from "react";
 export default function Home() {
   return (
     <main className="relative flex min-h-screen w-full items-center justify-center overflow-hidden rounded-lg border bg-background">
-      <div className="text-balance -mt-24 text-center">
-        <Card>
-          <CardHeader></CardHeader>
-          <CardContent>
-            <GoogleSignIn />
-          </CardContent>
-        </Card>
+      <div className="text-balance -mt-24 text-center z-10">
+        <BlurFade>
+          <Card>
+            <CardHeader></CardHeader>
+            <CardContent>
+              <GoogleSignIn />
+            </CardContent>
+          </Card>
+        </BlurFade>
       </div>
       <GridPattern
         numSquares={40}

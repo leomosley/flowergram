@@ -8,7 +8,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 import { Message } from "@prisma/client";
-import { Check, Pencil, X } from "lucide-react";
+import { Check, ExternalLink, Pencil, X } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -60,6 +61,14 @@ function MessageRow({
 
   return (
     <TableRow key={message.id}>
+      <TableCell className="max-w-[20px]">
+        <Link
+          href={`/message/${message.id}`}
+          className="flex items-center justify-center h-6 w-6 p-1 text-muted-foreground"
+        >
+          <ExternalLink className="w-full h-full" />
+        </Link>
+      </TableCell>
       <TableCell className="max-w-[100px]">
         <input
           className="max-w-[100px] text-ellipsis overflow-clip p-1 bg-transparent disabled:bg-transparent enabled:border enabled:rounded-sm"
@@ -162,6 +171,7 @@ export function MessagesTable({
       <Table className="p-4">
         <TableHeader>
           <TableRow>
+            <TableHead>Open</TableHead>
             <TableHead>To</TableHead>
             <TableHead>From</TableHead>
             <TableHead>Message</TableHead>
